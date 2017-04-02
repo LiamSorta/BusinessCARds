@@ -48,6 +48,9 @@
       <i class="material-icons">vpn_key</i>    Login 
     </button>
     <!-- TODO: We need a logout button! -->
+    <button id="logout" typed="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="display: none">
+      <i class="material-icons">exit_to_app</i>    Logout
+    </button>
     </nav>
   </div>
 </div>
@@ -97,6 +100,7 @@
           document.getElementById("add-employee").style.display = "block";
           document.getElementById("edit-employee").style.display = "block";
           document.getElementById("delete-employee").style.display = "block";
+          document.getElementById("logout").style.display = "block";
           dialog.close(); 
       }
       // TODO: Error message!
