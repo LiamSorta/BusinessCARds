@@ -48,6 +48,9 @@
       <i class="material-icons">vpn_key</i>    Login 
     </button>
     <!-- TODO: We need a logout button! -->
+    <button id="logout" typed="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="display: none">
+      <i class="material-icons">exit_to_app</i>    Logout
+    </button>
     </nav>
   </div>
 </div>
@@ -79,6 +82,17 @@
         <!-- TODO: We need a logout button -->
       </dialog>
   <script>
+    var logoutButton = document.querySelector("#logout");
+    logoutButton.addEventListener('click', function() {
+        CURRENTUSER = null;
+        LOGGEDIN = false;
+          document.getElementById("login").style.display = "block";
+          document.getElementById("add-employee").style.display = "none";
+          document.getElementById("edit-employee").style.display = "none";
+          document.getElementById("delete-employee").style.display = "none";
+          document.getElementById("logout").style.display = "none";
+    });
+
     var dialog = document.querySelector('#login-dialog');
     var showDialogButton = document.querySelector('#login');
     if (! dialog.showModal) {
@@ -97,6 +111,7 @@
           document.getElementById("add-employee").style.display = "block";
           document.getElementById("edit-employee").style.display = "block";
           document.getElementById("delete-employee").style.display = "block";
+          document.getElementById("logout").style.display = "block";
           dialog.close(); 
       }
       // TODO: Error message!
