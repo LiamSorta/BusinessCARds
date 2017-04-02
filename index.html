@@ -15,6 +15,11 @@
       LOGGEDIN = false;
       CURRENTUSER = null;
     </script>
+    <style> 
+      html {
+          overflow-y: hidden;
+      }
+    </style>
 </head>
 <body>
         <!-- Always shows a header, even in smaller screens. -->
@@ -97,8 +102,32 @@
       // TODO: Error message!
     });
   </script>
+  <div style="margin: auto; text-align: center">
+    <video id="videoElement" autoplay="true"></video>
+  </div>
+  <style>
+    video {
+      width: 70%;
+      margin: auto;
+      text-align: center;
+    }
+  </style>
+  <script>
+    var video = document.querySelector("#videoElement");
 
-    <canvas id="web-gl">
-    </canvas>
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+    if (navigator.getUserMedia) {       
+	navigator.getUserMedia({video: true}, handleVideo, videoError);
+    }
+
+    function handleVideo(stream) {
+	video.src = window.URL.createObjectURL(stream);
+    }  
+
+    function videoError() {
+	// do something
+    }
+  </script>
 </body>
 </html>
